@@ -4,4 +4,18 @@ const promise = () => {
   })
 }
 
-;(async function () {})()
+const resolver = async (promise) => {
+  try {
+    await promise()
+  } catch (err) {
+    console.log(err)
+  } finally {
+    return 'I still return the value'
+    console.log('I am here')
+  }
+}
+
+;(async function () {
+  const test = await resolver(promise)
+  console.log(test)
+})()
